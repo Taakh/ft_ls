@@ -6,14 +6,14 @@
 /*   By: rmangili <rmangili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 11:26:54 by rmangili          #+#    #+#             */
-/*   Updated: 2015/01/01 23:52:57 by rmangili         ###   ########.fr       */
+/*   Updated: 2015/01/04 05:27:41 by rmangili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 #include <stdlib.h>
 
-char	*wat_options(char **argv, int i, int *n, char *args) // Lecture des flags. 
+char	*wat_options(char **argv, int i, int *n, char *args) /* Lecture des flags. */
 {
 	int		j;
 
@@ -40,7 +40,7 @@ char	*wat_options(char **argv, int i, int *n, char *args) // Lecture des flags.
 	return (args);
 }
 
-void	init_struct(t_options *options) // Initialisation de la structure des options.
+void	init_struct(t_options *options) /* Initialisation de la structure des options. */
 {
 	options->a = 0;
 	options->l = 0;
@@ -49,7 +49,7 @@ void	init_struct(t_options *options) // Initialisation de la structure des optio
 	options->t = 0;
 }
 
-t_options	ft_ls_what(char *str) // Traitement des flags.
+t_options	ft_ls_what(char *str) /* Donne une valeur aux options dans la structure */
 {
 	int		i;
 	t_options	options;
@@ -71,23 +71,57 @@ t_options	ft_ls_what(char *str) // Traitement des flags.
 	{
 	return (options);
 }
-t_options	check_args(int	argc, char **argv, t_options options) // Recuperation des arguments.
-{
 
+int		treat_options(t_option *option, char **av) /* Traitement des flags */
+{
+	int		i;
+
+	i = 1;
+	*option = init_struct(*option);
+	while (av[i] && av[i][0] == '-')
+	{
+		if (ft_strlen(av[i]) == 1)
+		{
+			i--;
+			break ;
+		}
+		if (ft_strlen(av[i]) == 2 && av[i][1] == '-')
+		{
+			i++;
+			break ;
+		}
+		if (trash_flags(av[i]) == 0)
+			*option = ft_ls_what(*option, av[i]);
+		i++;
+	}
+	if (option->l == 0 && option->r == 0 && option->R == 0 &&
+		option->a == 0 && option->t == 0)
+		option->empty = 1;
+	if (option->t == 0 && option->r == 0)
+		option->emp_tr = 1;
+	return (i);
 }
 
-void		trash_flags(char option) // Gestion d'erreurs.
+void		trash_flags(char option) /* Gestion de flags interdit. */
 {
-	ft_putstr("ls : illegal option : -- ");
-	ft_putchar(option);
-	ft_putstr("\nusage : ls [-Ralrt] [file ...]\n");
-}
+	int		i;
+	char	ch;
 
-int		main(int argc,	char **argv) // Main.
-{
-	t_options		options;
-
-	options = check_args(argc, argv, options);
-	ls_no_option(argv, argc, options);
+	i = 1;
+	while (s[i])
+	{
+		if (s[i] != 'l' && s[i] != 'r' && s[i] != 'R' &&
+			s[i] != 'a' && s[i] != 't')
+		{
+			ch = s[i];
+			print_err("ft_ls: illegal option -- ", 0);
+			print_err(&ch, 0);
+			print_err("\n", 0);
+			print_err("usage: ft_ls [-Ralrt] [file ...]", 0);
+			print_err("\n", 0);
+			exit (2);
+		}
+		i++;
+	}
 	return (0);
 }

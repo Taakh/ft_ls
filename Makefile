@@ -6,7 +6,7 @@
 #    By: rmangili <rmangili@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/16 12:16:28 by rmangili          #+#    #+#              #
-#    Updated: 2014/12/29 12:31:03 by rmangili         ###   ########.fr        #
+#    Updated: 2015/01/04 05:27:42 by rmangili         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ $(NAME): all
 
 all:
 	@gcc -c -I. $(FLAGS) $(SRC) $(LIB) 
-	@ar rc $(NAME) $(OBJ)
+	@ar -rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 	@echo "Make [OK]!"
 

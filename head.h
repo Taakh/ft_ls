@@ -6,7 +6,7 @@
 /*   By: rmangili <rmangili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/14 20:02:26 by rmangili          #+#    #+#             */
-/*   Updated: 2015/01/01 23:52:59 by rmangili         ###   ########.fr       */
+/*   Updated: 2015/01/04 05:27:43 by rmangili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,17 @@ typedef struct		s_infos
 	char	type;
 
 }								t_infos;
+
+typedef struct				s_param
+{
+	t_infos					*err;
+	t_infos					*file;
+	t_infos					*dir;
+	char					*dir_name;
+	int						dir_num;
+	int						counter;
+	int						flag;
+}							t_param;
 
 typedef struct		s_options
 {
