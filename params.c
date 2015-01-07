@@ -6,11 +6,11 @@
 /*   By: rmangili <rmangili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/04 02:33:35 by rmangili          #+#    #+#             */
-/*   Updated: 2015/01/04 02:34:24 by rmangili         ###   ########.fr       */
+/*   Updated: 2015/01/07 02:40:30 by rmangili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "head.h"
 
 void 	cont_init(t_cont **new, struct stat *buf)
 {

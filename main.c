@@ -6,11 +6,11 @@
 /*   By: rmangili <rmangili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/04 02:01:11 by rmangili          #+#    #+#             */
-/*   Updated: 2015/01/04 05:27:39 by rmangili         ###   ########.fr       */
+/*   Updated: 2015/01/07 02:40:33 by rmangili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "head.h"
 
 t_param 	*cont_params_init(void) /* Initialisation de la liste */
 {
